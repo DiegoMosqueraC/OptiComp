@@ -1,5 +1,5 @@
 <?php
-
+// Actividad arquitectura diseño
 require_once "app/Core/Ticket.php";
 require_once "app/Data/TicketDAO.php";
 
