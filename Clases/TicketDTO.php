@@ -1,5 +1,5 @@
 <?php
-class Ticket {
+class TicketDTO {
     // Actividad 5 cliente servidor
     public $accion;
     public $cliente_id;
