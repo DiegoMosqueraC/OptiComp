@@ -1,7 +1,7 @@
 <?php
 //Actividad 6 arquitectura diseño
 class Ticket {
-
+    
     private $id;
     private $cliente_id;
     private $equipo;
