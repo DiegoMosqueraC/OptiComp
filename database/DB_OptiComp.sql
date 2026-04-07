@@ -1,3 +1,4 @@
+//avance de arquitectura diseño semana 6
 CREATE DATABASE DB_OptiComp;
 USE DB_OptiComp;
 
