@@ -2,7 +2,7 @@
 
 // avance semana 5 cliente servidor|
 
-require_once 'clases/Ticket.php';
+require_once 'clases/TicketDTO.php';
 require_once 'clases/TicketStub.php';
 
 try {
