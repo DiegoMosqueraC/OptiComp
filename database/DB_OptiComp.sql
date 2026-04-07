@@ -1,4 +1,3 @@
-
 CREATE DATABASE DB_OptiComp;
 USE DB_OptiComp;
 
