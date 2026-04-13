@@ -1,39 +1,49 @@
 <?php
 require_once 'Ticket.php';
 
-// Actividad 5 cliente servidor
-
 class TicketStub {
-    private $host;
-    private $port;
+    // Arquitectura cliente servidor guia 6
+    private $regHost = "127.0.0.1";
+    private $regPort = 6000;
 
-    public function __construct($host = "127.0.0.1", $port = 5000) {
-        $this->host = $host;
-        $this->port = $port;
-    }
-
-  
     public function enviarTicket(Ticket $ticket) {
-
-        $payload = json_encode($ticket);
-
-        $socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
-        if ($socket === false) {
-            throw new Exception("Error al crear socket: " . socket_strerror(socket_last_error()));
-        }
-
-        $result = socket_connect($socket, $this->host, $this->port);
-        if ($result === false) {
-            throw new Exception("Error al conectar: " . socket_strerror(socket_last_error($socket)));
-        }
-
-        socket_write($socket, $payload, strlen($payload));
-
-        $respuesta = socket_read($socket, 1024);
         
-        socket_close($socket);
         
-        return json_decode($respuesta, true);
+        $regSocket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
+        if (!@socket_connect($regSocket, $this->regHost, $this->regPort)) {
+            throw new Exception("No se pudo conectar al Registry.");
+        }
+        
+      
+        socket_write($regSocket, json_encode(["action" => "lookup", "service" => "TicketService"]));
+        $res = json_decode(socket_read($regSocket, 1024), true);
+        socket_close($regSocket);
+
+        if ($res['status'] == "found") {
+            
+           
+            $ip = $res['data']['ip'];
+            $port = $res['data']['port'];
+
+            // Arquitectura cliente servidor guia 5
+            $payload = json_encode($ticket); 
+
+            
+            $socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
+            socket_connect($socket, $ip, $port); 
+            socket_write($socket, $payload, strlen($payload));
+            
+           
+            $respuesta = socket_read($socket, 1024);
+            socket_close($socket);
+            
+            
+            return json_decode($respuesta, true);
+
+        } else {
+            
+            throw new Exception("Servicio 'TicketService' no encontrado.");
+        }
     }
 }
 ?>
