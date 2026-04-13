@@ -2,12 +2,12 @@
 //Actividad 6 arquitectura diseño
 class Ticket {
     
-    private $id;
-    private $cliente_id;
-    private $equipo;
-    private $descripcion;
-    private $estado;
-    private $fecha_ingreso;
+    public $id;
+    public $cliente_id;
+    public $equipo;
+    public $descripcion;
+    public $estado;
+    public $fecha_ingreso;
 
     public function __construct($cliente_id, $equipo, $descripcion, $estado, $fecha_ingreso) {
         $this->cliente_id = $cliente_id;
