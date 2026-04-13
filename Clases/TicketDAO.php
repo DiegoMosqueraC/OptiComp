@@ -9,7 +9,7 @@ class TicketDAO {
 
         $conexion = Conexion::getInstancia()->getConexion();
 
-        $sql = "INSERT INTO tickets (cliente_id, equipo, descripcion, estado, fecha_ingreso)
+        $sql = "INSERT INTO ticket (cliente_id, equipo, descripcion, estado, fecha_ingreso)
                 VALUES (?, ?, ?, ?, ?)";
 
         $stmt = $conexion->prepare($sql);
