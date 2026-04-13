@@ -7,7 +7,7 @@ class Conexion {
     private $conexion;
 
     private $host = "localhost";
-    private $db = "DB_OptiComp";
+    private $db = "db_opticomp";
     private $usuario = "root";
     private $password = "OC42067";
 
