@@ -2,6 +2,7 @@
 
 // avance semana 5 cliente servidor|
 require_once __DIR__ . '/../app/Core/Ticket.php';
+require_once __DIR__ . '/../app/Network/TicketDTO.php';
 require_once __DIR__ . '/../app/Network/TicketStub.php';
 
 try {
