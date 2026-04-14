@@ -1,23 +1,27 @@
 <?php
 
 // avance semana 5 cliente servidor|
-
-require_once 'clases/TicketDTO.php';
+require_once 'clases/Ticket.php';    // <-- 1. Faltaba importar la Entidad
+require_once 'clases/TicketDTO.php'; 
 require_once 'clases/TicketStub.php';
 
 try {
 
+
     $nuevoTicket = new Ticket(
-        "crear_ticket", 
         102, 
         "Laptop HP Pavilion", 
         "No enciende", 
+        "Abierto", // Estado inicial
         "2026-02-15"
     );
 
-    $stub = new TicketStub("127.0.0.1", 5005);
+
+    $stub = new TicketStub();
     
-    echo "Enviando ticket al servidor...\n";
+    echo "Buscando servicio y enviando ticket al servidor...\n";
+    
+
     $respuesta = $stub->enviarTicket($nuevoTicket);
 
     echo "Respuesta del servidor:\n";
