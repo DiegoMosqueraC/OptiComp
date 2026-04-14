@@ -27,7 +27,7 @@ class TicketDAO {
 
     public function obtenerTodos() {
         $conexion = Conexion::getInstancia()->getConexion();
-        return $conexion->query("SELECT * FROM tickets");
+        return $conexion->query("SELECT * FROM ticket");
     }
 }
 ?>
