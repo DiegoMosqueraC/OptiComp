@@ -4,14 +4,14 @@ class TicketDTO {
     public $accion;
     public $cliente_id;
     public $equipo;
-    public $descripcion_problema;
+    public $descripcion;
     public $fecha_ingreso;
 
     public function __construct($accion, $cliente_id, $equipo, $descripcion_problema, $fecha_ingreso) {
         $this->accion = $accion;
         $this->cliente_id = $cliente_id;
         $this->equipo = $equipo;
-        $this->descripcion_problema = $descripcion_problema;
+        $this->descripcion = $descripcion;
         $this->fecha_ingreso = $fecha_ingreso;
     }
 }
