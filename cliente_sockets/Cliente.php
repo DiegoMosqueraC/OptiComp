@@ -1,9 +1,8 @@
 <?php
 
 // avance semana 5 cliente servidor|
-require_once 'clases/Ticket.php';    // <-- 1. Faltaba importar la Entidad
-require_once 'clases/TicketDTO.php'; 
-require_once 'clases/TicketStub.php';
+require_once __DIR__ . '/../app/Core/Ticket.php';
+require_once __DIR__ . '/../app/Network/TicketStub.php';
 
 try {
 
