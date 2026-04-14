@@ -1,6 +1,6 @@
 <?php
-require_once 'Ticket.php';
-require_once 'TicketDTO.php'; // <-- 1. Importamos el DTO
+require_once __DIR__ . '/../Core/Ticket.php';
+require_once __DIR__ . '/TicketDTO.php';
 
 class TicketStub {
     // Arquitectura cliente servidor guia 6
