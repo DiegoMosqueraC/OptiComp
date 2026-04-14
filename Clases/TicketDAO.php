@@ -41,12 +41,12 @@ class TicketDAO {
     }
 
     // UPDATE
-    public function actualizarEstado($id, $nuevoEstado) {
+    public function actualizarEstadoYSalida($id, $nuevoEstado, $fechaSalida = null) {
         try {
-            $sql = "UPDATE ticket SET estado = ? WHERE id = ?";
+            $sql = "UPDATE ticket SET estado = ?, fecha_salida = ? WHERE id = ?";
             $stmt = $this->conexion->prepare($sql);
-            $stmt->execute([$nuevoEstado, $id]);
-            return "✔ Estado actualizado.";
+            $stmt->execute([$nuevoEstado, $fechaSalida, $id]);
+            return "✔ Ticket actualizado.";
         } catch (PDOException $e) {
             return "❌ Error al actualizar: " . $e->getMessage();
         }
