@@ -1,6 +1,7 @@
 <?php
 // avance semana 5 y 6 cliente servidor
-require_once __DIR__ . '/../Clases/Ticket.php';
+require_once __DIR__ . '/../app/Core/Ticket.php';
+require_once __DIR__ . '/../app/Core/TicketDAO.php';
 
 $host = "127.0.0.1";
 $port = 5005; 
