@@ -1,7 +1,7 @@
 <?php
 
-require_once __DIR__ . '/../Core/Conexion.php';
-require_once __DIR__ . '/../Core/Ticket.php';
+require_once __DIR__ . '/conexion.php';
+require_once __DIR__ . '/Ticket.php';
 
 class TicketDAO {
     
