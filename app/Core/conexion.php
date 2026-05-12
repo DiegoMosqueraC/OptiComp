@@ -7,11 +7,15 @@ class Conexion {
     private $conexion;
 
     private $host = "localhost";
+<<<<<<< HEAD
 <<<<<<<< HEAD:public/app/Core/conexion.php
     private $db = "db_opticomp";
 ========
     private $db = "mysql";
 >>>>>>>> 70c6add (Avance semana 6 y 7 de arquitectura y diseño):app/Core/conexion.php
+=======
+    private $db = "mysql";
+>>>>>>> 9a10ca8 (CODIGO UPDATE)
     private $usuario = "root";
     private $password = "";
 

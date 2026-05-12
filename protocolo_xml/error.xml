@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Mensaje>
+    <Tipo>Error</Tipo>
+    <Estado>Fallo</Estado>
+    <Control>
+        <Codigo>400</Codigo>
+        <Detalle>La estructura del XML no es válida.</Detalle>
+    </Control>
+</Mensaje>

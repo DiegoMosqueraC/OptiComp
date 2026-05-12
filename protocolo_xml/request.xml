@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Mensaje>
+    <Tipo>Request</Tipo>
+    <Operacion>crear_ticket</Operacion>
+    <Datos>
+        <Ticket>
+            <ClienteId>102</ClienteId>
+            <Equipo>Laptop HP Pavilion</Equipo>
+            <Descripcion>No enciende</Descripcion>
+            <FechaIngreso>2026-02-15</FechaIngreso>
+        </Ticket>
+    </Datos>
+</Mensaje>
