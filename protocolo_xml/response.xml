@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<Mensaje>
-    <Tipo>Response</Tipo>
-    <Estado>Exito</Estado>
-    <Datos>
-        <Respuesta>Ticket encolado y registrado correctamente.</Respuesta>
-        <IdGenerado>55</IdGenerado>
-    </Datos>
-</Mensaje>
