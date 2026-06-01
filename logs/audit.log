@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # OptiComp - Audit Log
 # Generado automáticamente por App\Core\Logger
 [2026-05-31 22:56:45] [ERROR_SISTEMA] Fallo de conexión BD: SQLSTATE[HY000] [1698] Access denied for user 'root'@'localhost'
@@ -66,3 +67,8 @@
 [2026-06-01 04:10:41] [OPERACION] Producto #15 registrado vía formulario.
 [2026-06-01 04:11:06] [OPERACION] API externa consumida. Registros recibidos: 10
 [2026-06-01 04:11:06] [OPERACION] Sincronización: 10 clientes importados desde API externa.
+=======
+[2026-05-12 06:01:58] [SEGURIDAD] Intento de inicio de sesión fallido. Usuario: admin@fesc.edu.co. IP: 192.168.1.45
+[2026-05-12 06:01:58] [OPERACION] Se insertó exitosamente un nuevo Ticket (ID: 105) en la base de datos.
+[2026-05-12 06:01:58] [ERROR_SISTEMA] Excepción PDO capturada: Connection refused. La base de datos no responde.
+>>>>>>> 66a3ee8d557d9db8d2529e7749591bbdeb522868

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="TicketService"
+             targetNamespace="http://localhost/OptiComp-main/servidor_sockets/TicketService.wsdl"
+             xmlns:tns="http://localhost/OptiComp-main/servidor_sockets/TicketService.wsdl"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+    <types>
+        <xsd:schema targetNamespace="http://localhost/OptiComp-main/servidor_sockets/TicketService.wsdl">
+            <xsd:element name="TicketRequest">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="ClienteId" type="xsd:int"/>
+                        <xsd:element name="Equipo" type="xsd:string"/>
+                        <xsd:element name="Descripcion" type="xsd:string"/>
+                        <xsd:element name="FechaIngreso" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="TicketResponse">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="Estado" type="xsd:string"/>
+                        <xsd:element name="IdGenerado" type="xsd:int"/>
+                        <xsd:element name="Mensaje" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:schema>
+    </types>
+
+    <message name="CrearTicketRequestMsg">
+        <part name="parameters" element="tns:TicketRequest"/>
+    </message>
+    <message name="CrearTicketResponseMsg">
+        <part name="parameters" element="tns:TicketResponse"/>
+    </message>
+
+    <portType name="TicketPortType">
+        <operation name="crearTicket">
+            <input message="tns:CrearTicketRequestMsg"/>
+            <output message="tns:CrearTicketResponseMsg"/>
+        </operation>
+    </portType>
+
+    <binding name="TicketBinding" type="tns:TicketPortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="crearTicket">
+            <soap:operation soapAction="crearTicket"/>
+            <input><soap:body use="literal"/></input>
+            <output><soap:body use="literal"/></output>
+        </operation>
+    </binding>
+
+    <service name="TicketService">
+        <port name="TicketPort" binding="tns:TicketBinding">
+            <soap:address location="http://localhost/OptiComp-main/servidor_sockets/ServidorSOAP.php"/>
+        </port>
+    </service>
+</definitions>

@@ -5,6 +5,7 @@ namespace App\Core;
 use PDO;
 use PDOException;
 
+<<<<<<< HEAD
 /**
  * Clase Conexion - Patrón Singleton (Guía 5)
  *
@@ -18,6 +19,20 @@ class Conexion
 {
     private static ?Conexion $instancia = null;
     private PDO $conexion;
+=======
+    private $host = "localhost";
+<<<<<<< HEAD
+<<<<<<<< HEAD:public/app/Core/conexion.php
+    private $db = "db_opticomp";
+========
+    private $db = "mysql";
+>>>>>>>> 70c6add (Avance semana 6 y 7 de arquitectura y diseño):app/Core/conexion.php
+=======
+    private $db = "mysql";
+>>>>>>> 9a10ca8 (CODIGO UPDATE)
+    private $usuario = "root";
+    private $password = "";
+>>>>>>> 66a3ee8d557d9db8d2529e7749591bbdeb522868
 
     private function __construct()
     {
