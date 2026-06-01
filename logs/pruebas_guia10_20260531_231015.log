@@ -1,0 +1,46 @@
+
+============================================================
+  OptiComp - Suite de Pruebas de Integracion (Guia 10)
+  Servidor: localhost
+  Fecha: dom 31 may 2026 23:10:15 UTC
+============================================================
+
+=== BLOQUE 1: Conectividad HTTP (Apache corriendo) ===
+  [FAIL] GET / (Home) — HTTP 404, esperado 200
+
+=== BLOQUE 2: WSDL publicado ===
+  [FAIL] GET WSDL (HTTP 200) — HTTP 404, esperado 200
+  [FAIL] WSDL no contiene <definitions>
+  [FAIL] WSDL no contiene pingServidor
+  [FAIL] WSDL falta consultarProductos
+
+=== BLOQUE 3: SOAP - pingServidor ===
+  [FAIL] SOAP POST pingServidor (HTTP 200) — HTTP 404, esperado 200
+  [FAIL] Response no es Envelope SOAP
+  [FAIL] pingServidor respuesta incorrecta
+  Response: <div style="font-family:sans-serif;padding:2rem"><h2>404 — Página no encontrada</h2><a href="http://localhost/OptiComp/public/">Volver al inicio</a></div>
+
+=== BLOQUE 4: SOAP - consultarProductos ===
+  [FAIL] SOAP POST consultarProductos (HTTP 200) — HTTP 404, esperado 200
+  [FAIL] Response no contiene SOAP Body
+
+=== BLOQUE 5: API XML - consultarProductos ===
+  [FAIL] XML POST consultarProductos (HTTP 200) — HTTP 404, esperado 200
+  [FAIL] API XML no retorna OK
+
+=== BLOQUE 6: Estabilidad - 10 peticiones concurrentes a pingServidor ===
+  Peticiones exitosas: 0/10
+  [FAIL] Servidor inestable (<90% exito)
+
+=== BLOQUE 7: Registro UDDI accesible ===
+  [FAIL] GET uddi_registry.json (HTTP 200) — HTTP 404, esperado 200
+
+============================================================
+  RESUMEN FINAL
+  Total pruebas: 14
+  PASS: 0
+  FAIL: 14
+  Log guardado en: logs/pruebas_guia10_20260531_231015.log
+============================================================
+  RESULTADO: HAY 14 PRUEBA(S) FALLIDAS
+

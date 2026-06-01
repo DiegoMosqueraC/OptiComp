@@ -1,52 +1,56 @@
 <?php
 
-// Conexion a la base de datos - Avance semana 5 Diseño y Arquitectura de Software
-class Conexion {
+namespace App\Core;
 
-    private static $instancia = null;
-    private $conexion;
+use PDO;
+use PDOException;
 
-    private $host = "localhost";
-<<<<<<<< HEAD:public/app/Core/conexion.php
-    private $db = "db_opticomp";
-========
-    private $db = "mysql";
->>>>>>>> 70c6add (Avance semana 6 y 7 de arquitectura y diseño):app/Core/conexion.php
-    private $usuario = "root";
-    private $password = "";
+/**
+ * Clase Conexion - Patrón Singleton (Guía 5)
+ *
+ * Responsabilidad única: gestionar la instancia de conexión PDO.
+ * REFACTORING APLICADO:
+ *   - Rename: $db -> $dbName (claridad semántica, PSR-12)
+ *   - Move Method: configuración extraída a config/database.php
+ *   - Extract Method: buildDsn() separado del constructor
+ */
+class Conexion
+{
+    private static ?Conexion $instancia = null;
+    private PDO $conexion;
 
-    private function __construct() {
+    private function __construct()
+    {
+        $config = require __DIR__ . '/../../config/database.php';
 
         try {
-
-            $this->conexion = new PDO(
-                "mysql:host=".$this->host.";dbname=".$this->db,
-                $this->usuario,
-                $this->password
-            );
-
-            $this->conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
+            $dsn = $this->buildDsn($config['host'], $config['dbname'], $config['charset']);
+            $this->conexion = new PDO($dsn, $config['username'], $config['password'], $config['options']);
         } catch (PDOException $e) {
-
-            die("Error de conexión: " . $e->getMessage());
-
+            Logger::logEvent('ERROR_SISTEMA', 'Fallo de conexión BD: ' . $e->getMessage());
+            die('Error de conexión a la base de datos. Revise la configuración.');
         }
     }
 
-    public static function getInstancia() {
+    /**
+     * EXTRACT METHOD: construcción del DSN separada del constructor.
+     */
+    private function buildDsn(string $host, string $dbName, string $charset): string
+    {
+        return "mysql:host={$host};dbname={$dbName};charset={$charset}";
+    }
 
-        if(self::$instancia == null){
-            self::$instancia = new Conexion();
+    public static function getInstancia(): self
+    {
+        if (self::$instancia === null) {
+            self::$instancia = new self();
         }
 
         return self::$instancia;
-
     }
 
-    public function getConexion(){
+    public function getConexion(): PDO
+    {
         return $this->conexion;
     }
-
 }
-?>

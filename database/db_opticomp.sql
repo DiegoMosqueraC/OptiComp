@@ -1,207 +1,148 @@
--- phpMyAdmin SQL Dump
--- version 5.2.1
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Generation Time: Apr 07, 2026 at 05:54 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- ============================================================
+-- OptiComp - Script SQL Completo v1.0
+-- Base de datos: db_opticomp
+-- Entorno: MariaDB 10.4 / MySQL 8.x
+-- Autores: Diego Alejandro Mosquera Caicedo
+--          Julián Daniel Erazo Garzón
+-- Asignatura: Arquitectura y Diseño de Software — FESC
+-- ============================================================
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `db_opticomp`
---
+SET NAMES utf8mb4;
 
 -- --------------------------------------------------------
+-- Creación / selección de la base de datos
+-- --------------------------------------------------------
+CREATE DATABASE IF NOT EXISTS `db_opticomp`
+    CHARACTER SET utf8mb4
+    COLLATE utf8mb4_general_ci;
 
---
--- Table structure for table `categoria`
---
+USE `db_opticomp`;
 
-CREATE TABLE `categoria` (
-  `cod_categoria` int(11) NOT NULL,
-  `detalle` varchar(255) NOT NULL
+-- --------------------------------------------------------
+-- Tabla: categoria
+-- --------------------------------------------------------
+CREATE TABLE IF NOT EXISTS `categoria` (
+    `cod_categoria` INT(11)      NOT NULL AUTO_INCREMENT,
+    `detalle`       VARCHAR(255) NOT NULL,
+    PRIMARY KEY (`cod_categoria`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
-
---
--- Table structure for table `cliente`
---
-
-CREATE TABLE `cliente` (
-  `id_cliente` int(11) NOT NULL,
-  `tp_doc` varchar(50) NOT NULL,
-  `nombre` varchar(100) NOT NULL,
-  `telefono` varchar(20) NOT NULL,
-  `email` varchar(100) NOT NULL
+-- Tabla: cliente
+-- --------------------------------------------------------
+CREATE TABLE IF NOT EXISTS `cliente` (
+    `id_cliente` INT(11)      NOT NULL AUTO_INCREMENT,
+    `tp_doc`     VARCHAR(50)  NOT NULL COMMENT 'CC, NIT, CE, TI',
+    `nombre`     VARCHAR(100) NOT NULL,
+    `telefono`   VARCHAR(20)  NOT NULL,
+    `email`      VARCHAR(100) NOT NULL,
+    PRIMARY KEY (`id_cliente`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
-
---
--- Table structure for table `producto`
---
-
-CREATE TABLE `producto` (
-  `id` bigint(20) NOT NULL,
-  `descripcion` varchar(255) NOT NULL,
-  `categoria_id` int(11) DEFAULT NULL
+-- Tabla: producto
+-- --------------------------------------------------------
+CREATE TABLE IF NOT EXISTS `producto` (
+    `id`           BIGINT(20)   NOT NULL AUTO_INCREMENT,
+    `descripcion`  VARCHAR(255) NOT NULL,
+    `categoria_id` INT(11)      DEFAULT NULL,
+    PRIMARY KEY (`id`),
+    KEY `fk_producto_categoria` (`categoria_id`),
+    CONSTRAINT `fk_producto_categoria`
+        FOREIGN KEY (`categoria_id`) REFERENCES `categoria` (`cod_categoria`)
+        ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
-
---
--- Table structure for table `producto_vendido`
---
-
-CREATE TABLE `producto_vendido` (
-  `id` bigint(20) NOT NULL,
-  `cantidad` decimal(10,2) DEFAULT NULL,
-  `producto_id` bigint(20) DEFAULT NULL,
-  `venta_id` bigint(20) DEFAULT NULL
+-- Tabla: venta
+-- --------------------------------------------------------
+CREATE TABLE IF NOT EXISTS `venta` (
+    `id`         BIGINT(20) NOT NULL AUTO_INCREMENT,
+    `fecha`      DATETIME   NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    `cliente_id` INT(11)    DEFAULT NULL,
+    PRIMARY KEY (`id`),
+    KEY `fk_venta_cliente` (`cliente_id`),
+    CONSTRAINT `fk_venta_cliente`
+        FOREIGN KEY (`cliente_id`) REFERENCES `cliente` (`id_cliente`)
+        ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
-
---
--- Table structure for table `ticket`
---
-
-CREATE TABLE `ticket` (
-  `id` int(11) NOT NULL,
-  `equipo` varchar(100) DEFAULT NULL,
-  `descripcion` text DEFAULT NULL,
-  `estado` varchar(50) DEFAULT NULL,
-  `fecha_ingreso` date DEFAULT NULL,
-  `fecha_salida` date DEFAULT NULL,
-  `cliente_id` int(11) DEFAULT NULL
+-- Tabla: producto_vendido
+-- --------------------------------------------------------
+CREATE TABLE IF NOT EXISTS `producto_vendido` (
+    `id`          BIGINT(20)     NOT NULL AUTO_INCREMENT,
+    `cantidad`    DECIMAL(10,2)  DEFAULT NULL,
+    `producto_id` BIGINT(20)     DEFAULT NULL,
+    `venta_id`    BIGINT(20)     DEFAULT NULL,
+    PRIMARY KEY (`id`),
+    KEY `fk_pv_producto` (`producto_id`),
+    KEY `fk_pv_venta`    (`venta_id`),
+    CONSTRAINT `fk_pv_producto`
+        FOREIGN KEY (`producto_id`) REFERENCES `producto` (`id`)
+        ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT `fk_pv_venta`
+        FOREIGN KEY (`venta_id`) REFERENCES `venta` (`id`)
+        ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
-
---
--- Table structure for table `venta`
---
-
-CREATE TABLE `venta` (
-  `id` bigint(20) NOT NULL,
-  `fecha` datetime NOT NULL,
-  `cliente_id` int(11) DEFAULT NULL
+-- Tabla: ticket
+-- --------------------------------------------------------
+CREATE TABLE IF NOT EXISTS `ticket` (
+    `id`            INT(11)      NOT NULL AUTO_INCREMENT,
+    `cliente_id`    INT(11)      DEFAULT NULL,
+    `equipo`        VARCHAR(100) DEFAULT NULL,
+    `descripcion`   TEXT         DEFAULT NULL,
+    `estado`        VARCHAR(50)  DEFAULT 'Abierto'
+                        COMMENT 'Abierto | En proceso | Cerrado',
+    `fecha_ingreso` DATE         DEFAULT NULL,
+    `fecha_salida`  DATE         DEFAULT NULL,
+    PRIMARY KEY (`id`),
+    KEY `fk_ticket_cliente` (`cliente_id`),
+    CONSTRAINT `fk_ticket_cliente`
+        FOREIGN KEY (`cliente_id`) REFERENCES `cliente` (`id_cliente`)
+        ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Indexes for dumped tables
---
+-- ============================================================
+-- DATOS DE PRUEBA (Seeders para sustentación)
+-- ============================================================
 
---
--- Indexes for table `categoria`
---
-ALTER TABLE `categoria`
-  ADD PRIMARY KEY (`cod_categoria`);
+-- Categorías
+INSERT IGNORE INTO `categoria` (`cod_categoria`, `detalle`) VALUES
+(1, 'Procesadores'),
+(2, 'Memorias RAM'),
+(3, 'Tarjetas de Video'),
+(4, 'Almacenamiento SSD/HDD'),
+(5, 'Fuentes de Poder'),
+(6, 'Refrigeración');
 
---
--- Indexes for table `cliente`
---
-ALTER TABLE `cliente`
-  ADD PRIMARY KEY (`id_cliente`);
+-- Clientes
+INSERT IGNORE INTO `cliente` (`id_cliente`, `tp_doc`, `nombre`, `telefono`, `email`) VALUES
+(1, 'CC',  'Juan Carlos Pérez',        '3001234567', 'juan.perez@correo.com'),
+(2, 'NIT', 'Tecnología SAS Colombia',  '3159876543', 'contacto@tecnsas.co');
 
---
--- Indexes for table `producto`
---
-ALTER TABLE `producto`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `categoria_id` (`categoria_id`);
+-- Productos de muestra
+INSERT IGNORE INTO `producto` (`descripcion`, `categoria_id`) VALUES
+('Intel Core i5-12400F',         1),
+('AMD Ryzen 5 5600X',            1),
+('Kingston 16GB DDR4 3200MHz',   2),
+('Corsair Vengeance 32GB DDR4',  2),
+('NVIDIA RTX 3060 12GB',         3),
+('AMD RX 6700 XT',               3),
+('Samsung SSD 870 EVO 1TB',      4),
+('Seagate Barracuda HDD 2TB',    4),
+('Corsair CV550 550W 80+ Bronze',5),
+('Cooler Master Hyper 212',      6);
 
---
--- Indexes for table `producto_vendido`
---
-ALTER TABLE `producto_vendido`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `producto_id` (`producto_id`),
-  ADD KEY `venta_id` (`venta_id`);
+-- Tickets de prueba
+INSERT IGNORE INTO `ticket` (`cliente_id`, `equipo`, `descripcion`, `estado`, `fecha_ingreso`) VALUES
+(1, 'Portátil Lenovo ThinkPad E14', 'Pantalla no enciende tras actualización de BIOS.', 'Abierto',     '2026-05-01'),
+(2, 'PC Gamer ASUS ROG Strix',      'Tarjeta de video presenta artefactos visuales.',   'En proceso',  '2026-05-10'),
+(1, 'MacBook Pro M1',               'Teclado con varias teclas sin respuesta.',          'Cerrado',     '2026-04-20');
 
---
--- Indexes for table `ticket`
---
-ALTER TABLE `ticket`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `cliente_id` (`cliente_id`);
-
---
--- Indexes for table `venta`
---
-ALTER TABLE `venta`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `cliente_id` (`cliente_id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `categoria`
---
-ALTER TABLE `categoria`
-  MODIFY `cod_categoria` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `producto_vendido`
---
-ALTER TABLE `producto_vendido`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `ticket`
---
-ALTER TABLE `ticket`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `venta`
---
-ALTER TABLE `venta`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `producto`
---
-ALTER TABLE `producto`
-  ADD CONSTRAINT `producto_ibfk_1` FOREIGN KEY (`categoria_id`) REFERENCES `categoria` (`cod_categoria`);
-
---
--- Constraints for table `producto_vendido`
---
-ALTER TABLE `producto_vendido`
-  ADD CONSTRAINT `producto_vendido_ibfk_1` FOREIGN KEY (`producto_id`) REFERENCES `producto` (`id`),
-  ADD CONSTRAINT `producto_vendido_ibfk_2` FOREIGN KEY (`venta_id`) REFERENCES `venta` (`id`);
-
---
--- Constraints for table `ticket`
---
-ALTER TABLE `ticket`
-  ADD CONSTRAINT `ticket_ibfk_1` FOREIGN KEY (`cliente_id`) REFERENCES `cliente` (`id_cliente`);
-
---
--- Constraints for table `venta`
---
-ALTER TABLE `venta`
-  ADD CONSTRAINT `venta_ibfk_1` FOREIGN KEY (`cliente_id`) REFERENCES `cliente` (`id_cliente`);
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+-- Actualizar ticket cerrado con fecha de salida
+UPDATE `ticket` SET `fecha_salida` = '2026-04-25' WHERE `id` = 3 AND `estado` = 'Cerrado';

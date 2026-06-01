@@ -1,0 +1,67 @@
+{
+  "_descripcion": "Registro UDDI-like de OptiComp (Guia 10 - Actividad 2). Actualizar IP antes de cada sesion.",
+  "version": "1.0",
+  "actualizado": "2026-05-30",
+  "services": {
+    "OptiCompService": {
+      "nombre": "OptiComp SOAP Service",
+      "descripcion": "Servicio de gestion de tickets y productos PC - MVP academico FESC",
+      "version": "1.0.0",
+      "wsdl_url": "http://10.0.2.15/soap/server.php?wsdl",
+      "endpoint_url": "http://10.0.2.15/soap/server.php",
+      "protocolo": "SOAP 1.1",
+      "transport": "HTTP POST",
+      "namespace": "urn:OptiCompService",
+      "metodos": [
+        {
+          "nombre": "pingServidor",
+          "descripcion": "Verifica conectividad con el servidor",
+          "parametros": [],
+          "retorno": "string"
+        },
+        {
+          "nombre": "consultarProductos",
+          "descripcion": "Retorna lista completa de productos del catalogo",
+          "parametros": [],
+          "retorno": "ProductoArray"
+        },
+        {
+          "nombre": "registrarProducto",
+          "descripcion": "Registra un nuevo producto en la base de datos",
+          "parametros": ["descripcion:string", "categoria_id:int"],
+          "retorno": "RespuestaSimple"
+        },
+        {
+          "nombre": "consultarTickets",
+          "descripcion": "Retorna todos los tickets de soporte registrados",
+          "parametros": [],
+          "retorno": "TicketArray"
+        },
+        {
+          "nombre": "registrarTicket",
+          "descripcion": "Crea un nuevo ticket de soporte tecnico",
+          "parametros": ["cliente_id:int", "equipo:string", "descripcion:string", "estado:string"],
+          "retorno": "RespuestaSimple"
+        }
+      ]
+    },
+    "OptiCompXmlService": {
+      "nombre": "OptiComp XML-REST Service",
+      "descripcion": "Endpoint REST-XML para interoperabilidad (Guia 7)",
+      "wsdl_url": null,
+      "endpoint_url": "http://10.0.2.15/api/xml",
+      "protocolo": "REST/XML",
+      "transport": "HTTP POST",
+      "metodos": [
+        {
+          "nombre": "registrarProducto",
+          "operacion_xml": "registrarProducto"
+        },
+        {
+          "nombre": "consultarProductos",
+          "operacion_xml": "consultarProductos"
+        }
+      ]
+    }
+  }
+}

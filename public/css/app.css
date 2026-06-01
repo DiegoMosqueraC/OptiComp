@@ -1,0 +1,85 @@
+/* OptiComp - Hoja de estilos principal */
+/* Diseño sobrio, profesional, convencional */
+
+body {
+    background-color: #f8f9fa;
+    color: #212529;
+    font-size: 0.95rem;
+}
+
+/* Navbar */
+.navbar-brand {
+    letter-spacing: 0.02em;
+    font-size: 1.1rem;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(255,255,255,0.75);
+    transition: color 0.15s ease;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover,
+.navbar-dark .navbar-nav .nav-link.active {
+    color: #fff;
+}
+
+/* Cards */
+.card {
+    border-radius: 4px;
+    transition: box-shadow 0.15s ease;
+}
+
+.card:hover {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.card-header {
+    border-radius: 4px 4px 0 0 !important;
+}
+
+/* Tables */
+.table th {
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
+}
+
+.table td {
+    vertical-align: middle;
+    font-size: 0.9rem;
+}
+
+/* Buttons */
+.btn {
+    border-radius: 3px;
+    font-size: 0.875rem;
+}
+
+/* Alerts */
+.alert {
+    border-radius: 3px;
+    font-size: 0.9rem;
+}
+
+/* Forms */
+.form-control,
+.form-select {
+    border-radius: 3px;
+    font-size: 0.9rem;
+}
+
+.form-label {
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+/* Border accent cards (dashboard) */
+.border-start {
+    border-left-width: 4px !important;
+}
+
+/* Footer */
+footer {
+    font-size: 0.82rem;
+    border-top: 1px solid #343a40;
+}

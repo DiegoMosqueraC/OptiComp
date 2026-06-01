@@ -1,0 +1,46 @@
+
+============================================================
+  OptiComp - Suite de Pruebas de Integracion (Guia 10)
+  Servidor: localhost
+  Fecha: lun 01 jun 2026 01:47:07 UTC
+============================================================
+
+=== BLOQUE 1: Conectividad HTTP (Apache corriendo) ===
+  [FAIL] GET / (Home) — HTTP 500, esperado 200
+
+=== BLOQUE 2: WSDL publicado ===
+  [PASS] GET WSDL (HTTP 200)
+  [PASS] WSDL contiene <definitions>
+  [PASS] WSDL contiene operacion pingServidor
+  [PASS] WSDL contiene operacion consultarProductos
+
+=== BLOQUE 3: SOAP - pingServidor ===
+  [PASS] SOAP POST pingServidor (HTTP 200)
+  [PASS] Response es Envelope SOAP valido
+  [PASS] pingServidor retorna mensaje correcto
+  Response: <?xml version="1.0" encoding="UTF-8"?> <SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns1="urn:OptiCompService" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/enco
+
+=== BLOQUE 4: SOAP - consultarProductos ===
+  [PASS] SOAP POST consultarProductos (HTTP 200)
+  [PASS] Response contiene SOAP Body
+
+=== BLOQUE 5: API XML - consultarProductos ===
+  [PASS] XML POST consultarProductos (HTTP 200)
+  [PASS] API XML retorna status OK
+
+=== BLOQUE 6: Estabilidad - 10 peticiones concurrentes a pingServidor ===
+  Peticiones exitosas: 10/10
+  [PASS] Servidor estable (>=90% exito)
+
+=== BLOQUE 7: Registro UDDI accesible ===
+  [PASS] GET uddi_registry.json (HTTP 200)
+
+============================================================
+  RESUMEN FINAL
+  Total pruebas: 14
+  PASS: 13
+  FAIL: 1
+  Log guardado en: logs/pruebas_guia10_20260601_014707.log
+============================================================
+  RESULTADO: HAY 1 PRUEBA(S) FALLIDAS
+

@@ -1,7 +1,0 @@
-<request>
-    <operacion>registrarProducto</operacion>
-    <datos>
-        <nombre>Mouse</nombre>
-        <precio>80000</precio>
-    </datos>
-</request>

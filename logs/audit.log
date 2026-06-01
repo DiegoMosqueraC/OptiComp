@@ -1,0 +1,68 @@
+# OptiComp - Audit Log
+# Generado automáticamente por App\Core\Logger
+[2026-05-31 22:56:45] [ERROR_SISTEMA] Fallo de conexión BD: SQLSTATE[HY000] [1698] Access denied for user 'root'@'localhost'
+[2026-05-31 22:59:11] [ERROR_SISTEMA] Fallo de conexión BD: SQLSTATE[HY000] [1698] Access denied for user 'root'@'localhost'
+[2026-05-31 23:01:51] [ERROR_SISTEMA] Fallo de conexión BD: SQLSTATE[HY000] [1698] Access denied for user 'root'@'localhost'
+[2026-05-31 23:18:54] [ERROR_SISTEMA] Fallo de conexión BD: SQLSTATE[HY000] [1698] Access denied for user 'root'@'localhost'
+[2026-05-31 23:18:54] [ERROR_SISTEMA] Fallo de conexión BD: SQLSTATE[HY000] [1698] Access denied for user 'root'@'localhost'
+[2026-05-31 23:18:54] [OPERACION] API XML: operación recibida = consultarProductos
+[2026-05-31 23:18:54] [ERROR_SISTEMA] Fallo de conexión BD: SQLSTATE[HY000] [1698] Access denied for user 'root'@'localhost'
+[2026-05-31 23:18:54] [OPERACION] API XML: operación recibida = consultarProductos
+[2026-05-31 23:18:54] [ERROR_SISTEMA] Fallo de conexión BD: SQLSTATE[HY000] [1698] Access denied for user 'root'@'localhost'
+[2026-05-31 23:25:04] [ERROR_SISTEMA] Fallo de conexión BD: SQLSTATE[HY000] [1698] Access denied for user 'root'@'localhost'
+[2026-05-31 23:25:39] [ERROR_SISTEMA] Fallo de conexión BD: SQLSTATE[HY000] [1698] Access denied for user 'root'@'localhost'
+[2026-05-31 23:25:39] [ERROR_SISTEMA] Fallo de conexión BD: SQLSTATE[HY000] [1698] Access denied for user 'root'@'localhost'
+[2026-05-31 23:25:39] [OPERACION] API XML: operación recibida = consultarProductos
+[2026-05-31 23:25:39] [ERROR_SISTEMA] Fallo de conexión BD: SQLSTATE[HY000] [1698] Access denied for user 'root'@'localhost'
+[2026-05-31 23:25:39] [OPERACION] API XML: operación recibida = consultarProductos
+[2026-05-31 23:25:39] [ERROR_SISTEMA] Fallo de conexión BD: SQLSTATE[HY000] [1698] Access denied for user 'root'@'localhost'
+[2026-05-31 23:25:39] [ERROR_SISTEMA] Fallo de conexión BD: SQLSTATE[HY000] [1698] Access denied for user 'root'@'localhost'
+[2026-05-31 23:25:39] [ERROR_SISTEMA] Fallo de conexión BD: SQLSTATE[HY000] [1698] Access denied for user 'root'@'localhost'
+[2026-05-31 23:25:39] [OPERACION] API XML: operación recibida = consultarProductos
+[2026-05-31 23:25:39] [ERROR_SISTEMA] Fallo de conexión BD: SQLSTATE[HY000] [1698] Access denied for user 'root'@'localhost'
+[2026-05-31 23:25:40] [OPERACION] API XML: operación recibida = consultarProductos
+[2026-05-31 23:25:40] [ERROR_SISTEMA] Fallo de conexión BD: SQLSTATE[HY000] [1698] Access denied for user 'root'@'localhost'
+[2026-05-31 23:26:01] [ERROR_SISTEMA] Fallo de conexión BD: SQLSTATE[HY000] [1698] Access denied for user 'root'@'localhost'
+[2026-05-31 23:26:02] [ERROR_SISTEMA] Fallo de conexión BD: SQLSTATE[HY000] [1698] Access denied for user 'root'@'localhost'
+[2026-06-01 01:05:01] [ERROR_SISTEMA] Fallo de conexión BD: SQLSTATE[HY000] [1698] Access denied for user 'root'@'localhost'
+[2026-06-01 01:06:39] [ERROR_SISTEMA] Fallo de conexión BD: SQLSTATE[HY000] [1698] Access denied for user 'root'@'localhost'
+[2026-06-01 01:18:53] [ERROR_SISTEMA] Fallo de conexión BD: SQLSTATE[HY000] [1698] Access denied for user 'root'@'localhost'
+[2026-06-01 01:36:12] [SOAP] consultarProductos: 10 registros retornados.
+[2026-06-01 01:36:12] [SOAP] registrarProducto: ID 11 insertado vía SOAP.
+[2026-06-01 01:36:12] [SOAP] consultarTickets: 3 tickets retornados.
+[2026-06-01 01:36:12] [SOAP] registrarTicket: Ticket #4 creado vía SOAP.
+[2026-06-01 01:37:18] [SOAP] consultarProductos: 11 registros retornados.
+[2026-06-01 01:37:18] [SOAP] registrarProducto: ID 12 insertado vía SOAP.
+[2026-06-01 01:37:18] [SOAP] consultarTickets: 4 tickets retornados.
+[2026-06-01 01:37:18] [SOAP] registrarTicket: Ticket #5 creado vía SOAP.
+[2026-06-01 01:47:07] [SOAP] consultarProductos: 12 registros retornados.
+[2026-06-01 01:47:07] [SOAP] consultarProductos: 12 registros retornados.
+[2026-06-01 01:47:07] [OPERACION] API XML: operación recibida = consultarProductos
+[2026-06-01 01:47:07] [OPERACION] API XML: operación recibida = consultarProductos
+[2026-06-01 01:50:41] [OPERACION] API XML: operación recibida = 
+[2026-06-01 01:53:36] [OPERACION] API XML: operación recibida = consultarProductos
+[2026-06-01 01:56:13] [OPERACION] API XML: operación recibida = consultarProductos
+[2026-06-01 03:11:46] [OPERACION] Producto ID 2 eliminado.
+[2026-06-01 03:54:13] [SOAP] consultarProductos: 11 registros retornados.
+[2026-06-01 03:54:13] [SOAP] registrarProducto: ID 13 insertado vía SOAP.
+[2026-06-01 03:54:13] [SOAP] consultarTickets: 5 tickets retornados.
+[2026-06-01 03:54:14] [SOAP] registrarTicket: Ticket #6 creado vía SOAP.
+[2026-06-01 03:54:46] [OPERACION] Producto ID 5 eliminado.
+[2026-06-01 03:54:49] [SOAP] consultarProductos: 11 registros retornados.
+[2026-06-01 03:54:49] [SOAP] registrarProducto: ID 14 insertado vía SOAP.
+[2026-06-01 03:54:49] [SOAP] consultarTickets: 6 tickets retornados.
+[2026-06-01 03:54:49] [SOAP] registrarTicket: Ticket #7 creado vía SOAP.
+[2026-06-01 03:59:26] [OPERACION] API externa consumida. Registros recibidos: 10
+[2026-06-01 03:59:26] [OPERACION] Sincronización: 10 clientes importados desde API externa.
+[2026-06-01 04:04:03] [ERROR_SISTEMA] Error crear ticket: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_opticomp`.`ticket`, CONSTRAINT `fk_ticket_cliente` FOREIGN KEY (`cliente_id`) REFERENCES `cliente` (`id_cliente`) ON DELETE SET NULL ON UPDATE CASCADE)
+[2026-06-01 04:04:25] [OPERACION] Ticket ID 2 eliminado.
+[2026-06-01 04:04:41] [OPERACION] Ticket creado con ID: 9
+[2026-06-01 04:04:41] [OPERACION] Ticket #9 creado vía formulario web.
+[2026-06-01 04:09:36] [OPERACION] Ticket creado con ID: 10
+[2026-06-01 04:09:36] [OPERACION] Ticket #10 creado vía formulario web.
+[2026-06-01 04:09:55] [OPERACION] Ticket ID 9 actualizado a estado: Cerrado
+[2026-06-01 04:10:01] [OPERACION] Ticket ID 9 eliminado.
+[2026-06-01 04:10:41] [OPERACION] Producto creado con ID: 15
+[2026-06-01 04:10:41] [OPERACION] Producto #15 registrado vía formulario.
+[2026-06-01 04:11:06] [OPERACION] API externa consumida. Registros recibidos: 10
+[2026-06-01 04:11:06] [OPERACION] Sincronización: 10 clientes importados desde API externa.
